@@ -2,14 +2,16 @@
 
 ## 01_hello_terraform
 
-git clone https://github.com/tfutils/tfenv.git ~/.tfenv
-echo 'export PATH="$HOME/.tfenv/bin:$PATH"' >> ~/.bashrc
-exec $SHELL
-tfenv install latest
-tfenv use 1.6.4
-https://github.com/DocteurSEO/terraform.git
-cd terraform/01_hello_terraform/
-nano main.tf
+Installation de Terraform sur la CloudShell AWS :
+- git clone https://github.com/tfutils/tfenv.git ~/.tfenv
+- echo 'export PATH="$HOME/.tfenv/bin:$PATH"' >> ~/.bashrc
+- exec $SHELL
+- tfenv install latest
+- tfenv use 1.6.4
+
+- https://github.com/DocteurSEO/terraform.git
+- cd terraform/01_hello_terraform/
+- nano main.tf
 
 // TODO Publier une petite instance AWS EC2
 provider "aws" {
@@ -21,13 +23,14 @@ resource "aws_instance" "debian12" {
  instance_type = "t2.micro"
 }
 
-terraform init
-terraform plan
-terraform apply
+- terraform init
+- terraform plan
+- terraform apply
 
 ## 02_hello_vpc
-cd ../02_hello_vpc
-nano main.tf
+
+- cd ../02_hello_vpc
+- nano main.tf
 
 provider "aws" {
   region = "eu-west-3"
@@ -53,16 +56,16 @@ resource "aws_subnet" "my_subnet" {
   }
 }
 
-terraform init
-terraform plan
-terraform apply
+- terraform init
+- terraform plan
+- terraform apply
 
 ## 03_hello_apache
 
-cd ~
-ssh-keygen -t rsa -b 2048 -f ~/.ssh/id_rsa
-cd 03-hello_apache
-nano main.tf
+- cd ~
+- ssh-keygen -t rsa -b 2048 -f ~/.ssh/id_rsa
+- cd 03-hello_apache
+- nano main.tf
 
 provider "aws" {
   region = "us-west-1"
@@ -105,6 +108,6 @@ resource "aws_instance" "my_instance" {
   }
 }
 
-terraform init
-terraform plan
-terraform apply
+- terraform init
+- terraform plan
+- terraform apply
