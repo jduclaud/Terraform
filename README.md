@@ -13,7 +13,6 @@ Installation de Terraform sur la CloudShell AWS :
 - cd terraform/01_hello_terraform/
 - nano main.tf
  ``` 
-// TODO Publier une petite instance AWS EC2
 provider "aws" {
   region = "eu-west-3"
 }
@@ -62,7 +61,6 @@ resource "aws_subnet" "my_subnet" {
 
 ## 03_hello_apache
 
-- cd ~
 - ssh-keygen -t rsa -b 2048 -f ~/.ssh/id_rsa
 - cd 03-hello_apache
 - nano main.tf
