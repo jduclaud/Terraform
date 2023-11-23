@@ -12,7 +12,7 @@ Installation de Terraform sur la CloudShell AWS :
 - https://github.com/DocteurSEO/terraform.git
 - cd terraform/01_hello_terraform/
 - nano main.tf
-
+```hcl
 // TODO Publier une petite instance AWS EC2
 provider "aws" {
   region = "eu-west-3"
