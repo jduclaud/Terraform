@@ -31,7 +31,7 @@ resource "aws_instance" "debian12" {
 
 - cd ../02_hello_vpc
 - nano main.tf
-
+ ``` 
 provider "aws" {
   region = "eu-west-3"
 }
@@ -55,7 +55,7 @@ resource "aws_subnet" "my_subnet" {
     Name = "MonSubnet"
   }
 }
-
+ ``` 
 - terraform init
 - terraform plan
 - terraform apply
@@ -66,7 +66,7 @@ resource "aws_subnet" "my_subnet" {
 - ssh-keygen -t rsa -b 2048 -f ~/.ssh/id_rsa
 - cd 03-hello_apache
 - nano main.tf
-
+ ``` 
 provider "aws" {
   region = "us-west-1"
 }
@@ -107,7 +107,7 @@ resource "aws_instance" "my_instance" {
     Name = "MyEC2Instance"
   }
 }
-
+ ``` 
 - terraform init
 - terraform plan
 - terraform apply
