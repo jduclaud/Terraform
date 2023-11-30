@@ -274,12 +274,18 @@ module "wordpress" {
 ## 06_hello_github
  ```
 provider "github" {
-  token = "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"
+  token = "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"
 }
 
 resource "github_repository" "mon_repo" {
-  name        = "my_new_repo"
+  name        = var.nom_du_repo
   description = "Créé avec Terraform"
   private     = true
+}
+
+variable "nom_du_repo" {
+  description = "Nom du dépôt GitHub"
+  type        = string
+  default     = "test"
 }
  ```
