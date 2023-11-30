@@ -272,6 +272,8 @@ module "wordpress" {
 - terraform apply
 
 ## 06_hello_github
+ 
+ nano main.tf
  ```
 provider "github" {
   token = "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"
@@ -288,4 +290,14 @@ variable "nom_du_repo" {
   type        = string
   default     = "test"
 }
+ ```
+nano terraform.py
+ ```
+import subprocess
+import sys
+nom_du_repo = sys.argv[1]
+subprocess.run(['terraform', 'apply', '-var', f'nom_du_repo={nom_du_repo}'])
+ ```
+ ```
+sudo python3 terraform.py my_repo
  ```
