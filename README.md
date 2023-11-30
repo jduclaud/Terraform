@@ -301,3 +301,56 @@ subprocess.run(['terraform', 'apply', '-var', f'nom_du_repo={nom_du_repo}'])
  ```
 sudo python3 terraform.py my_repo
  ```
+
+## 07_hello_vultr
+
+ ```
+provider "vultr" {
+  api_key = "SILLVA2A6J3F6S4SKKSNXAPFNZFMWNFF2MRA"
+}
+
+resource "vultr_firewall_group" "my_firewallgroup" {
+    description = "base firewall"
+}
+
+resource "vultr_firewall_rule" "ssh_rule" {
+    firewall_group_id = vultr_firewall_group.my_firewallgroup.id
+    protocol          = "tcp"
+    ip_type           = "v4"
+    subnet            = "0.0.0.0"
+    subnet_size       = 0
+    port              = "22"
+    notes             = "ssh"
+}
+
+resource "vultr_firewall_rule" "http_rule" {
+    firewall_group_id = vultr_firewall_group.my_firewallgroup.id
+    protocol          = "tcp"
+    ip_type           = "v4"
+    subnet            = "0.0.0.0"
+    subnet_size       = 0
+    port              = "80"
+    notes             = "http"
+}
+
+resource "vultr_instance" "example" {
+  region       = "fra"
+  plan         = "vc2-1c-1gb"
+  os_id        = "387"
+  hostname     = "exo-7"
+
+  provisioner "remote-exec" {
+    inline = [
+      "sudo apt-get update",
+      "sudo apt install -y apt-transport-https ca-certificates curl software-properties-common",
+      "curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg",
+      "echo 'deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable' | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null",
+      "sudo apt update",
+      "sudo apt install -y docker-ce docker-ce-cli containerd.io",
+      "sudo systemctl start docker",
+      "sudo docker pull satzisa/html5-speedtest",
+      "sudo docker run -d -p 80:80 satzisa/html5-speedtest",
+    ]
+  }
+}
+ ```
