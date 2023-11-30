@@ -271,7 +271,7 @@ module "wordpress" {
 - terraform plan
 - terraform apply
 
-## 05_hello_github
+## 06_hello_github
  ```
 provider "github" {
   token = "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"
