@@ -270,3 +270,16 @@ module "wordpress" {
 - terraform init
 - terraform plan
 - terraform apply
+
+## 05_hello_github
+ ```
+provider "github" {
+  token = "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"
+}
+
+resource "github_repository" "mon_repo" {
+  name        = "my_new_repo"
+  description = "Créé avec Terraform"
+  private     = true
+}
+ ```
